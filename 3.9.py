@@ -18,16 +18,17 @@ def Cezar(message, key):
 
 message = input("Введите сообщение: ")
 mode = input("Выберите режим: 1 или 2 (3.91 и 3.92): ")
+k = int(input("Введите '1', если шифровать, или '-1', если расшифровать: "))
 
 key = []
 
 if mode == '1':
-    key_num = int(input("Введите сдвиг: "))
+    key_num = int(input("Введите сдвиг: ")) * k
     key = [key_num]*len(message)
 elif mode == '2':
     key = []
     for i in range(len(message)):
-        key.append(int(input(f'Введите ключ для {i+1} буквы ("{message[i]}"): ')))
+        key.append(int(input(f'Введите ключ для {i+1} буквы ("{message[i]}"): ') * k))
 
 
 print(f'Итоговое сообщение: {Cezar(message, key)}')
